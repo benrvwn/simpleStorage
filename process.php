@@ -72,19 +72,24 @@ function retrieve(){
                 $inventory = $_POST['u-inventory'];
                 $date = filter_input(INPUT_POST, 'u-xDate', FILTER_SANITIZE_SPECIAL_CHARS);
             
-                $repos = 'images/';
-                $image = $repos . basename($_FILES["u-image"]["name"]);
-                $imageFileType = strtolower(pathinfo($image,PATHINFO_EXTENSION));
-                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif" ) {
-                    echo "error";
-                }else{
-                    move_uploaded_file($_FILES["u-image"]["tmp_name"], $image);
-                    $conn->query("UPDATE products SET product_name = '{$productName}', unit = '{$unit}', price = {$price}, expiry_date = '{$date}', inventory = {$inventory}, image = '{$image}', updated_at = NOW() WHERE id = {$_POST['id']}");
-                    retrieve();
-                    $content = ob_get_clean();
-                    echo $content;
+                $conn->query("UPDATE products SET product_name = '{$productName}', unit = '{$unit}', price = {$price}, expiry_date = '{$date}', inventory = {$inventory}, updated_at = NOW() WHERE id = {$_POST['id']}");
+                
+                if (!empty($_FILES["u-image"]["name"])) {
+                    $repos = 'images/';
+                    $image = $repos . basename($_FILES["u-image"]["name"]);
+                    $imageFileType = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+                    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif" ) {
+                        echo "error";
+                    }
+                    else{
+                        move_uploaded_file($_FILES["u-image"]["tmp_name"], $image);
+                        $conn->query("UPDATE products SET image='{$image}'");
+                    }
                 }
+                retrieve();
+                $content = ob_get_clean();
+                echo $content;
             }
             
         }

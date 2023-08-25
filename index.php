@@ -74,6 +74,7 @@
                         if(response == 'error'){
                             $('.update').append("<div class='alert alert-danger' role='alert'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</div>");
                         }else{
+                            console.log(response);
                             $('tbody').empty();
                             $('tbody').append(response);
                             $('#update-product').removeClass('show');
@@ -164,7 +165,7 @@
                     <input type="date" name="u-xDate" class="form-control u-xDate" required>
                 </label>
                 <label>Image:
-                    <input type="file" name="u-image" class="form-control u-image" required>
+                    <input type="file" name="u-image" class="form-control u-image">
                 </label>
                 <input type="submit" value="UPDATE" class="btn btn-primary">
             </div>
