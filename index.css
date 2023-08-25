@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.cont {
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cont form {
+  width: 480px;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.16);
+}
+.cont form h2 {
+  background-color: #6155B4;
+  color: white;
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+}
+.cont form .inputs {
+  padding: 20px;
+}
+.cont form .inputs div {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
+.cont form .inputs label {
+  display: block;
+}
+.cont form .inputs label input[type=file] {
+  margin-bottom: 20px;
+}
+.cont form .inputs label input {
+  text-align: center;
+}
+.cont form .inputs input[type=submit] {
+  width: 100%;
+}
+.cont table {
+  box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.16);
+}
+.cont table tbody td img {
+  height: 50px;
+  width: 50px;
+}
+.cont .hide {
+  display: none;
+}
+.cont .show {
+  display: block;
+}
+@media (max-width: 673px) {
+  * {
+    font-size: small;
+  }
+  .cont form {
+    width: 96%;
+    margin: 5px;
+    border-radius: 20px;
+  }
+  .cont form h2 {
+    padding: 10px;
+  }
+  .cont form .inputs {
+    padding: 10px;
+  }
+  .cont form .inputs div {
+    gap: 10px;
+  }
+  .cont .table-cont {
+    width: 96%;
+  }
+  .cont .table-cont table {
+    overflow: scroll;
+  }
+}
